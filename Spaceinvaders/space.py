@@ -1,4 +1,5 @@
 import pygame, controls
+import os
 from gun import Gun
 from pygame.sprite import Group
 from stats import Stats
@@ -32,12 +33,13 @@ def blizzard():
     screen = pygame.display.set_mode((700, 800))
     pygame.display.set_caption('Space invaders')
     bg_color = (75, 0, 130)
-    background_image = pygame.image.load('C:/Games/Spaceinvaders/images/background.png')
+    base_path = os.path.dirname(__file__)  
+    background_image = pygame.image.load(os.path.join(base_path, 'images', 'background.png'))
     gun = Gun(screen)
     bullets = Group()
-    music_files3 = [ 'C:\Games\Spaceinvaders\images\music1.mp3',
-                     'C:\Games\Spaceinvaders\images\music2.mp3',
-                     'C:\Games\Spaceinvaders\images\music3.mp3']
+    music_files3 = [os.path.join(base_path, 'images', 'music1.mp3'),
+        os.path.join(base_path, 'images', 'music2.mp3'),
+        os.path.join(base_path, 'images', 'music3.mp3') ]
 
     current_track = 0
     sound_on = True
